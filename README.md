@@ -76,71 +76,7 @@ The 7408 contains **four independent 2-input AND gates** 🚪🚪🚪🚪 in a 1
   PIN   7  --|         |--  8 PIN
              +---------+
 
-*/
 
-module IC7408(
-input PIN1,
-input PIN2,
-output PIN3,
-
-input PIN4,
-input PIN5,
-output PIN6,
-
-
-input PIN10,
-input PIN9,
-output PIN8,
-
-input PIN12,
-input PIN13,
-output PIN11,
-
-input PIN7,
-input PIN14
-);
-logic GND; 
-logic VCC;
-assign PIN3 = PIN1 & PIN2;
-
-assign PIN6 = PIN4 & PIN5;
-
-
-assign PIN8 = PIN10 & PIN9;
-
-assign PIN11 = PIN12 & PIN13;
- 
-
-endmodule
-```
-
----
-
-## 🚀 Usage
-
-```systemverilog
-module top (
-    input  logic a, b, c, d,
-    output logic y1, y2
-);
-
-    logic gnd = 1'b0;
-    logic vcc = 1'b1;
-
-    IC7408 U1 (
-        // Gate 1
-        .PIN1 (a),  .PIN2 (b),  .PIN3 (y1),
-        // Gate 2
-        .PIN4 (c),  .PIN5 (d),  .PIN6 (y2),
-        // Gate 3 (unused inputs tied low)
-        .PIN10(1'b0), .PIN9 (1'b0), .PIN8 (),
-        // Gate 4 (unused inputs tied low)
-        .PIN12(1'b0), .PIN13(1'b0), .PIN11(),
-        // Power
-        .PIN7 (gnd), .PIN14(vcc)
-    );
-
-endmodule
 ```
 
 ### ▶️ Simulation
